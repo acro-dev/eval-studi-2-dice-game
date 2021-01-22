@@ -22,11 +22,20 @@ ion-grid {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
+.last-row {
+    margin-top: 100px;
+}
+ion-button {
+    font-size: 25px;
+    font-weight: 300;
+}
+
 .displayPlayerGlobal {
     font-size: 100px;
     font-weight: 100;
     color: var(--ion-danger-color);
 }
+
 .displayPlayerCurrent {
     background-color: var(--ion-danger-color);
     width: fit-content;
@@ -34,7 +43,6 @@ ion-grid {
     margin-top: 50px;
     margin-bottom: 50px;
 }
-
 .displayPlayerCurrent > div {
     color: white;
     font-size: 40px;
@@ -56,27 +64,19 @@ ion-grid {
     background-color: white;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
-
 #diceValue {
     font-size: 50px;
 }
 
-.last-row {
-    margin-top: 100px;
-}
-
-ion-button {
-    font-size: 25px;
-    font-weight: 300;
-}
-h2 {
+.playerName {
     font-size: 35px;
     font-weight: 300px;
 }
-.currentPlayer {
+
+.highlightPlayer {
     font-weight: 700;
 }
-.currentPlayer::after {
+.highlightPlayer::after {
     content: "";
     margin-left: 10px;
     margin-bottom: 5px;

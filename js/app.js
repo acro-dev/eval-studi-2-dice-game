@@ -158,11 +158,11 @@ function updatePlayerscore() {
 
 function nplayer(nextPlayer) {
     if (nextPlayer == player1) {
-        player1Tag.classList.add("currentPlayer")
-        player2Tag.classList.remove("currentPlayer")
+        player1Tag.classList.add("highlightPlayer")
+        player2Tag.classList.remove("highlightPlayer")
     } else {
-        player1Tag.classList.remove("currentPlayer")
-        player2Tag.classList.add("currentPlayer")
+        player1Tag.classList.remove("highlightPlayer")
+        player2Tag.classList.add("highlightPlayer")
     }
     return
 }

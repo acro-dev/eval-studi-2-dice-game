@@ -5,10 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>eval-studi-2-dice-game</title>
+    <title>Dice Game by Acro-dev</title>
 </head>
 
 <body>
+
+    <main class="container">
+
+        <button id="newGameButton">New Game</button>
+
+        <div class="boardDisplay">
+            <div id="player1" class="player">
+                <div id="player1Name">PLAYER 1</div>
+                <div>
+                    <h2>Player Round</h2>
+                    <div id="player1Round">0</div>
+                </div>
+                <div>
+                    <h2>Player Global</h2>
+                    <div id="player1Global">0</div>
+                </div>
+            </div>
+
+            <div id="dice">
+                <div id="diceValue">1</div>
+            </div>
+
+            <div id="player2" class="player">
+                <div id="player2Name">PLAYER 2</div>
+                <div>
+                    <h2>Player Round</h2>
+                    <div id="player2Round">0</div>
+                </div>
+                <div>
+                    <h2>Player Global</h2>
+                    <div id="player2Global">0</div>
+                </div>
+            </div>
+        </div>
+
+        <button id="rollDiceButton">Roll Dice</button>
+        <button id="holdButton">Hold</button>
+    </main>
+
     <script src="js/app.js"></script>
 </body>
 

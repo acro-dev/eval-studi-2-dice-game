@@ -1,51 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-    font-size: 20px;
     font-family: Lato;
 }
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
-    width: 100vw;
-    height: 100vh;
-}
-button {
-    width: 200px;
-    margin: 50px;
-    height: 50px;
-}
-.container {
-    width: 1280px;
-    height: 720px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: yellowgreen;
+.displayPlayerCurrent {
+    background-color: #eb445a;
+    width: fit-content;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-.boardDisplay {
-    display: flex;
-    width: 800px;
-    justify-content: space-around;
-    align-items: center;
+.displayPlayerCurrent > div {
+    color: white;
+    font-size: 40px;
+    padding-bottom: 10px;
 }
-.boardDisplay div {
-    text-align: center;
+.displayPlayerCurrent > h3 {
+    padding: 10px 30px;
 }
 
 #dice {
-    width: 100px;
-    height: 100px;
-    margin: 30px;
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
     background-color: burlywood;
     border: 1px solid black;
     display: flex;
@@ -55,13 +36,4 @@ button {
 
 #diceValue {
     font-size: 50px;
-}
-
-#player1Name,
-#player1Round,
-#player1Global,
-#player2Round,
-#player2Global,
-#player2Name {
-    margin: 30px;
 }

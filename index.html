@@ -4,49 +4,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="css/style.css">
     <title>Dice Game by Acro-dev</title>
 </head>
 
 <body>
+    <ion-app>
+        <ion-header class="ion-margin-bottom">
+            <ion-toolbar>
+                <ion-title class="ion-text-center">Dice Game</ion-title>
+            </ion-toolbar>
+        </ion-header>
 
-    <main class="container">
+        <ion-content>
+            <ion-grid>
 
-        <button id="newGameButton">New Game</button>
+                <ion-row>
+                    <ion-col class="ion-text-center">
+                        <ion-button color="dark" expand="block" fill="none" size="large" id="newGameButton">
+                            <ion-icon color="danger" slot="start" name="ios-add-circle-outline"></ion-icon>New Game
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
 
-        <div class="boardDisplay">
-            <div id="player1" class="player">
-                <div id="player1Name">PLAYER 1</div>
-                <div>
-                    <h2>Player Round</h2>
-                    <div id="player1Round">0</div>
-                </div>
-                <div>
-                    <h2>Player Global</h2>
-                    <div id="player1Global">0</div>
-                </div>
-            </div>
+                <ion-row class="ion-justify-content-between">
+                    <ion-col size="4">
+                        <ion-text class="ion-text-center">
+                            <h2>PLAYER 1</h2>
+                        </ion-text>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-text class="ion-text-center">
+                            <h2>PLAYER 2</h2>
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
 
-            <div id="dice">
-                <div id="diceValue">1</div>
-            </div>
+                <ion-row class="ion-align-items-center">
+                    <ion-col>
+                        <ion-text class="ion-text-center">
+                            <div id="player1Global" class="displayPlayerGlobal">
+                                0
+                            </div>
+                        </ion-text>
+                    </ion-col>
+                    <ion-col>
+                        <div id="dice">
+                            <div id="diceValue">1</div>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <ion-text class="ion-text-center">
+                            <div id="player2Global" class="displayPlayerGlobal">
+                                0
+                            </div>
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
 
-            <div id="player2" class="player">
-                <div id="player2Name">PLAYER 2</div>
-                <div>
-                    <h2>Player Round</h2>
-                    <div id="player2Round">0</div>
-                </div>
-                <div>
-                    <h2>Player Global</h2>
-                    <div id="player2Global">0</div>
-                </div>
-            </div>
-        </div>
+                <ion-row class="ion-align-items-center">
+                    <ion-col>
+                        <ion-text class="ion-text-center">
+                            <div class="displayPlayerCurrent">
+                                <h3>CURRENT</h3>
+                                <div id="player1Round">0</div>
+                            </div>
+                        </ion-text>
+                    </ion-col>
+                    <ion-col>
+                        <div>
+                            <ion-button color="dark" expand="block" fill="none" size="large" id="rollDiceButton">
+                                <ion-icon color="danger" slot="start" name="sync"></ion-icon>Roll Dice
+                            </ion-button>
+                        </div>
+                        <div>
+                            <ion-button color="dark" expand="block" fill="none" size="large" id="holdButton">
+                                <ion-icon color="danger" slot="start" name="download"></ion-icon> Hold
+                            </ion-button>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <ion-text class="ion-text-center">
+                            <div class="displayPlayerCurrent">
+                                <h3>CURRENT</h3>
+                                <div id="player2Round">0</div>
+                            </div>
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-content>
+    </ion-app>
 
-        <button id="rollDiceButton">Roll Dice</button>
-        <button id="holdButton">Hold</button>
-    </main>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
 
     <script src="js/app.js"></script>
 </body>

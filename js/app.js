@@ -25,6 +25,7 @@ class Game {
         this.player1.globalScore = 0
         this.player2.roundScore = 0
         this.player2.globalScore = 0
+
         this.currentPlayer = this.randFirstPlayer()
         this.winner = null
 
@@ -39,8 +40,8 @@ class Game {
         return firstPlayer
     }
 
-    changePlayer() {
-        if (!this.currentPlayer.turn) {
+    changePlayer(playerTurn) {
+        if (!playerTurn) {
             // Switch between the 2 players.
             this.currentPlayer == this.player1
                 ? (this.currentPlayer = this.player2)
@@ -49,6 +50,13 @@ class Game {
         }
 
         return this.currentPlayer
+    }
+
+    checkWinner(globalScore) {
+        if (globalScore >= 100) {
+            this.winner = this.currentPlayer
+        }
+        return this.winner
     }
 
     gameOver() {
@@ -62,23 +70,26 @@ class Player {
         this.globalScore = 0
         this.turn = false
     }
+
     rollDice() {
         // Roll dice method
         // We simulate a dice roll (random number between 1 and 6).
         let diceValue = Math.ceil(Math.random() * 6)
 
-        // If dice value = 1, the round is over and player loose his current stack.
+        return diceValue
+    }
+
+    checkDiceResult(diceValue) {
         if (diceValue == 1) {
             this.roundScore = 0
             this.turn = false
-        }
-        // Else, the dice value is add to his current stack.
-        else {
+        } else if (diceValue > 1 && diceValue <= 6) {
             this.roundScore += diceValue
+            this.turn = true
         }
-
-        return diceValue
+        return this.turn
     }
+
     hold() {
         // Hold the round score and add to global score.
         // Only if he roll dice at least once !
@@ -108,13 +119,10 @@ newGameButton.addEventListener("click", () => {
 
 rollDiceButton.addEventListener("click", () => {
     if (game.winner == null) {
-        if (game.currentPlayer.turn) {
-            // If current player turn =  true, then current player roll dice.
-            diceValue.innerText = game.currentPlayer.rollDice()
-        } else {
-            // If current player turn = false, then next player roll dice.
-            diceValue.innerText = game.changePlayer().rollDice()
-        }
+        let diceRoll = game.currentPlayer.rollDice()
+        diceValue.innerText = diceRoll
+        let playerTurn = game.currentPlayer.checkDiceResult(diceRoll)
+        game.changePlayer(playerTurn)
     } else {
         // If there is a winner, don't throw.
     }
@@ -122,14 +130,12 @@ rollDiceButton.addEventListener("click", () => {
 })
 
 holdButton.addEventListener("click", () => {
-    if (game.winner == null) {
-        // If there is no winner
-        game.currentPlayer.hold()
+    if (game.currentPlayer.roundScore > 0) {
+        let newGlobalScore = game.currentPlayer.hold()
+        let winner = game.checkWinner(newGlobalScore)
 
-        if (game.currentPlayer.globalScore >= 100) {
-            game.gameOver()
-        } else {
-            game.changePlayer()
+        if (winner == null) {
+            game.changePlayer(game.currentPlayer.turn)
         }
     }
     updatePlayerscore()

@@ -1,31 +1,41 @@
 // Find and init DOM elements
-const rollDiceButton = document.getElementById('rollDiceButton')
-const holdButton = document.getElementById('holdButton')
-const newGameButton = document.getElementById('newGameButton')
+const rollDiceButton = document.getElementById("rollDiceButton")
+const holdButton = document.getElementById("holdButton")
+const newGameButton = document.getElementById("newGameButton")
 
-const player1Round = document.getElementById('player1Round')
-const player1Global = document.getElementById('player1Global')
+const player1Round = document.getElementById("player1Round")
+const player1Global = document.getElementById("player1Global")
 
-const player2Round = document.getElementById('player2Round')
-const player2Global = document.getElementById('player2Global')
+const player2Round = document.getElementById("player2Round")
+const player2Global = document.getElementById("player2Global")
 
-
-const diceValue = document.getElementById('diceValue')
+const diceValue = document.getElementById("diceValue")
 
 // Declare Classes for Game and Players.
 class Game {
     constructor(player1, player2) {
         this.player1 = player1
         this.player2 = player2
+        this.currentPlayer = this.randFirstPlayer()
         this.winner = null
     }
 
     newGame() {
-        // New Game Method
+        this.player1.roundScore = 0
+        this.player1.globalScore = 0
+        this.player2.roundScore = 0
+        this.player2.globalScore = 0
+        this.currentPlayer = this.randFirstPlayer()
+        this.winner = null
+
+        return this
     }
 
     randFirstPlayer() {
-        // Rand to know who will play first.
+        let rand = Math.round(Math.random())
+        let firstPlayer = null
+        rand == 0 ? (firstPlayer = this.player1) : (firstPlayer = this.player2)
+        return firstPlayer
     }
 
     gameOver() {
@@ -44,7 +54,7 @@ class Player {
         let diceValue = Math.ceil(Math.random() * 6)
         console.log(`${this.name} get a ${diceValue}.`)
 
-        return (diceValue)
+        return diceValue
     }
     hold() {
         // Hold the round score and add to global score.
@@ -56,9 +66,8 @@ class Player {
             this.roundScore = 0
 
             return this.globalScore
-
         } else {
-            return 'Error : Your round score is null, cannot hold your score.'
+            return "Error : Your round score is null, cannot hold your score."
         }
     }
 }
@@ -68,14 +77,14 @@ player2 = new Player()
 
 game = new Game(player1, player2)
 
-newGameButton.addEventListener('click', () => {
+newGameButton.addEventListener("click", () => {
     // new game event
 })
 
-rollDiceButton.addEventListener('click', () => {
+rollDiceButton.addEventListener("click", () => {
     // player roll event
 })
 
-holdButton.addEventListener('click', () => {
+holdButton.addEventListener("click", () => {
     // player hold event
 })

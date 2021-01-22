@@ -3,6 +3,9 @@ const rollDiceButton = document.getElementById("rollDiceButton")
 const holdButton = document.getElementById("holdButton")
 const newGameButton = document.getElementById("newGameButton")
 
+const player1Tag = document.getElementById("player1")
+const player2Tag = document.getElementById("player2")
+
 const player1Round = document.getElementById("player1Round")
 const player1Global = document.getElementById("player1Global")
 
@@ -112,9 +115,12 @@ player2 = new Player()
 
 game = new Game(player1, player2)
 
+nplayer(game.currentPlayer)
+
 newGameButton.addEventListener("click", () => {
     game.newGame()
     updatePlayerscore()
+    nplayer(game.currentPlayer)
 })
 
 rollDiceButton.addEventListener("click", () => {
@@ -122,7 +128,8 @@ rollDiceButton.addEventListener("click", () => {
         let diceRoll = game.currentPlayer.rollDice()
         diceValue.innerText = diceRoll
         let playerTurn = game.currentPlayer.checkDiceResult(diceRoll)
-        game.changePlayer(playerTurn)
+        let nextPlayer = game.changePlayer(playerTurn)
+        nplayer(nextPlayer)
     } else {
         // If there is a winner, don't throw.
     }
@@ -135,7 +142,8 @@ holdButton.addEventListener("click", () => {
         let winner = game.checkWinner(newGlobalScore)
 
         if (winner == null) {
-            game.changePlayer(game.currentPlayer.turn)
+            let nextPlayer = game.changePlayer(game.currentPlayer.turn)
+            nplayer(nextPlayer)
         }
     }
     updatePlayerscore()
@@ -146,4 +154,15 @@ function updatePlayerscore() {
     player1Round.innerText = player1.roundScore
     player2Global.innerText = player2.globalScore
     player2Round.innerText = player2.roundScore
+}
+
+function nplayer(nextPlayer) {
+    if (nextPlayer == player1) {
+        player1Tag.classList.add("currentPlayer")
+        player2Tag.classList.remove("currentPlayer")
+    } else {
+        player1Tag.classList.remove("currentPlayer")
+        player2Tag.classList.add("currentPlayer")
+    }
+    return
 }

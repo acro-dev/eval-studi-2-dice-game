@@ -1,12 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
-
+:root {
+    --ion-background-color: transparent;
+    --ion-danger-color: #eb445a;
+}
 * {
     font-family: Lato;
 }
 
+ion-content {
+    background: radial-gradient(
+        circle,
+        rgba(255, 220, 90, 1) 0%,
+        rgba(170, 131, 30, 1) 100%
+    );
+}
 ion-grid {
-    background-color: darkkhaki;
-    border: 1px solid;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+    background-color: beige;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -15,9 +25,10 @@ ion-grid {
 .displayPlayerGlobal {
     font-size: 100px;
     font-weight: 100;
+    color: var(--ion-danger-color);
 }
 .displayPlayerCurrent {
-    background-color: #eb445a;
+    background-color: var(--ion-danger-color);
     width: fit-content;
     margin: auto;
     margin-top: 50px;
@@ -57,4 +68,21 @@ ion-grid {
 ion-button {
     font-size: 25px;
     font-weight: 300;
+}
+h2 {
+    font-size: 35px;
+    font-weight: 300px;
+}
+.currentPlayer {
+    font-weight: 700;
+}
+.currentPlayer::after {
+    content: "";
+    margin-left: 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: var(--ion-danger-color);
+    border-radius: 8px;
 }

@@ -11,17 +11,11 @@
 
 <body>
     <ion-app>
-        <ion-header class="ion-margin-bottom">
-            <ion-toolbar>
-                <ion-title class="ion-text-center">Dice Game</ion-title>
-            </ion-toolbar>
-        </ion-header>
-
         <ion-content>
-            <ion-grid>
+            <ion-grid fixed="true">
 
-                <ion-row>
-                    <ion-col class="ion-text-center">
+                <ion-row class="ion-justify-content-center">
+                    <ion-col size="4" class="ion-text-center">
                         <ion-button color="dark" expand="block" fill="none" size="large" id="newGameButton">
                             <ion-icon color="danger" slot="start" name="ios-add-circle-outline"></ion-icon>New Game
                         </ion-button>
@@ -63,7 +57,7 @@
                     </ion-col>
                 </ion-row>
 
-                <ion-row class="ion-align-items-center">
+                <ion-row class="ion-align-items-center last-row">
                     <ion-col>
                         <ion-text class="ion-text-center">
                             <div class="displayPlayerCurrent">

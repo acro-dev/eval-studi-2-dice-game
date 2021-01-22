@@ -36,20 +36,37 @@ class Game {
 class Player {
     constructor() {
         this.roundScore = 0
-        this.gloabalScore = 0
+        this.globalScore = 0
     }
     rollDice() {
         // Roll dice method
+        // We simulate a dice roll (random number between 1 and 6).
+        let diceValue = Math.ceil(Math.random() * 6)
+        console.log(`${this.name} get a ${diceValue}.`)
+
+        return (diceValue)
     }
     hold() {
-        // Hold method
+        // Hold the round score and add to global score.
+        // Only if he roll dice at least once !
+        if (this.roundScore > 0) {
+            this.globalScore += this.roundScore
+
+            // Then, reset is roundScore for the next turn.
+            this.roundScore = 0
+
+            return this.globalScore
+
+        } else {
+            return 'Error : Your round score is null, cannot hold your score.'
+        }
     }
 }
 
 player1 = new Player()
 player2 = new Player()
 
-game = new Game()
+game = new Game(player1, player2)
 
 newGameButton.addEventListener('click', () => {
     // new game event

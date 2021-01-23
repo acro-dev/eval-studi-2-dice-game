@@ -63,7 +63,7 @@ class Game {
     }
 
     gameOver() {
-        // Game Over Method
+        alert(`Congratulation !`)
     }
 }
 
@@ -109,18 +109,20 @@ class Player {
         }
     }
 }
-
+// Init players and game
 player1 = new Player()
 player2 = new Player()
 
 game = new Game(player1, player2)
 
-nplayer(game.currentPlayer)
+// Highlight the first player.
+highlightPlayer(game.currentPlayer)
 
+// Event listenners
 newGameButton.addEventListener("click", () => {
     game.newGame()
-    updatePlayerscore()
-    nplayer(game.currentPlayer)
+    updatePlayerScore()
+    highlightPlayer(game.currentPlayer)
 })
 
 rollDiceButton.addEventListener("click", () => {
@@ -129,34 +131,37 @@ rollDiceButton.addEventListener("click", () => {
         diceValue.innerText = diceRoll
         let playerTurn = game.currentPlayer.checkDiceResult(diceRoll)
         let nextPlayer = game.changePlayer(playerTurn)
-        nplayer(nextPlayer)
+        highlightPlayer(nextPlayer)
     } else {
         // If there is a winner, don't throw.
     }
-    updatePlayerscore()
+    updatePlayerScore()
 })
 
 holdButton.addEventListener("click", () => {
     if (game.currentPlayer.roundScore > 0) {
         let newGlobalScore = game.currentPlayer.hold()
         let winner = game.checkWinner(newGlobalScore)
+        updatePlayerScore()
 
         if (winner == null) {
             let nextPlayer = game.changePlayer(game.currentPlayer.turn)
-            nplayer(nextPlayer)
+            highlightPlayer(nextPlayer)
+        } else {
+            game.gameOver()
         }
     }
-    updatePlayerscore()
 })
 
-function updatePlayerscore() {
+// DOM Manipuation functions
+function updatePlayerScore() {
     player1Global.innerText = player1.globalScore
     player1Round.innerText = player1.roundScore
     player2Global.innerText = player2.globalScore
     player2Round.innerText = player2.roundScore
 }
 
-function nplayer(nextPlayer) {
+function highlightPlayer(nextPlayer) {
     if (nextPlayer == player1) {
         player1Tag.classList.add("highlightPlayer")
         player2Tag.classList.remove("highlightPlayer")
@@ -164,5 +169,4 @@ function nplayer(nextPlayer) {
         player1Tag.classList.remove("highlightPlayer")
         player2Tag.classList.add("highlightPlayer")
     }
-    return
 }

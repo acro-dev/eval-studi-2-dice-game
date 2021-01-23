@@ -9,7 +9,7 @@ const player1Global = document.getElementById("player1Global")
 const player2Round = document.getElementById("player2Round")
 const player2Global = document.getElementById("player2Global")
 
-const diceValue = document.getElementById("diceValue")
+const diceValue = document.getElementById("dice")
 
 // Declare Classes for Game and Players.
 class Game {
@@ -120,7 +120,10 @@ newGameButton.addEventListener("click", () => {
 rollDiceButton.addEventListener("click", () => {
     if (game.winner == null) {
         let diceRoll = game.currentPlayer.rollDice()
-        diceValue.innerText = diceRoll
+        diceValue.removeAttribute("class")
+        void diceValue.offsetWidth // To reset animation
+        diceValue.classList.add(drawDice(diceRoll), "animateDice")
+
         let playerTurn = game.currentPlayer.checkDiceResult(diceRoll)
         game.changePlayer(playerTurn)
     } else {
@@ -146,4 +149,9 @@ function updatePlayerscore() {
     player1Round.innerText = player1.roundScore
     player2Global.innerText = player2.globalScore
     player2Round.innerText = player2.roundScore
+}
+
+function drawDice(diceRoll) {
+    let diceClass = "dice" + diceRoll
+    return diceClass
 }

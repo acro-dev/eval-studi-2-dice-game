@@ -1,9 +1,29 @@
+@keyframes wizz {
+    0% {
+        transform: translateX(-3vw) rotate(-10deg);
+    }
+
+    33% {
+        transform: translateX(3vw) rotate(0deg);
+    }
+    66% {
+        transform: translateX(-3vw) rotate(10deg);
+    }
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
 .dot {
     width: 26px;
     height: 26px;
     border-radius: 13px;
     background-color: black;
     position: absolute;
+}
+.animateDice {
+    transform: rotateZ(0);
+    animation: wizz 0.3s ease-in-out 1;
 }
 /* Dice 1 */
 .dice1 #dot1 {

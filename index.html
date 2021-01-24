@@ -14,11 +14,16 @@
     <ion-app>
         <ion-content>
             <ion-grid fixed="true">
-
-                <ion-row class="ion-justify-content-center">
+                <ion-row class="ion-justify-content-center ion-align-items-center">
+                    <ion-col size="4"></ion-col>
                     <ion-col size="4" class="ion-text-center">
                         <ion-button color="dark" expand="block" fill="none" size="large" id="newGameButton">
                             <ion-icon color="danger" slot="start" name="ios-add-circle-outline"></ion-icon>New Game
+                        </ion-button>
+                    </ion-col>
+                    <ion-col size="4" class="ion-text-right">
+                        <ion-button color="dark" fill="none" id="rulesButton">
+                            <ion-icon color="medium" slot="start" name="ios-help-circle-outline"></ion-icon>
                         </ion-button>
                     </ion-col>
                 </ion-row>
@@ -94,10 +99,37 @@
                     </ion-col>
                 </ion-row>
             </ion-grid>
-            <div id="winnerModal">
-                <div id="winnerContent">
+            <div id="modalWindow">
+                <div id="modalContent">
                     <span id="closeModal">&times;</span>
-                    <div id="winnerDisplay">PLAYER 1 WINS !</div>
+                    <div id="winnerDisplay"></div>
+                    <div id="rulesDisplay">
+                        <h1>Rules</h1>
+                        <p>
+                            Each turn, a player repeatedly rolls a dice until either a 1 is rolled or the player
+                            decides to "hold":
+                        </p>
+                        <ul>
+                            <li>
+                                If the player rolls a 1, they score nothing and it becomes the next player's turn.
+                            </li>
+                            <li>
+                                If the player rolls any other number, it is added to their turn total and the player's
+                                turn continues.
+                            </li>
+                            <li>
+                                If a player chooses to "hold", their turn total is added to their score, and it
+                                becomes the next player's turn.
+                            </li>
+                        </ul>
+                        <p>
+                            The first player to score 100 or more points wins.
+                        </p>
+                        <p>
+                            See <a href="https://en.wikipedia.org/wiki/Pig_(dice_game)">Wikipedia</a> for more
+                            informations.
+                        </p>
+                    </div>
                 </div>
             </div>
         </ion-content>

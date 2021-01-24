@@ -14,8 +14,10 @@ const player2Global = document.getElementById("player2Global")
 
 const diceValue = document.getElementById("dice")
 
-const winnerModal = document.getElementById("winnerModal")
+const modalWindow = document.getElementById("modalWindow")
 const winnerDisplay = document.getElementById("winnerDisplay")
+const rulesButton = document.getElementById("rulesButton")
+const rulesDisplay = document.getElementById("rulesDisplay")
 const closeModal = document.getElementById("closeModal")
 
 // Declare Classes for Game and Players.
@@ -184,17 +186,29 @@ function gameOver() {
     } else {
         winnerName = "PLAYER 2"
     }
+    modalWindow.style.display = "block"
+    winnerDisplay.style.display = "block"
+
     winnerDisplay.innerText = winnerName + " WINS !"
-    winnerModal.style.display = "block"
 }
+
+// Open rules when user click on rules button
+rulesButton.addEventListener("click", () => {
+    modalWindow.style.display = "block"
+    rulesDisplay.style.display = "block"
+})
 
 // Close modal when user click on the cross or on the background.
 closeModal.addEventListener("click", () => {
-    winnerModal.style.display = "none"
+    winnerDisplay.style.display = "none"
+    rulesDisplay.style.display = "none"
+    modalWindow.style.display = "none"
 })
 
-winnerModal.addEventListener("click", (e) => {
-    if (e.target.id == "winnerModal") {
-        winnerModal.style.display = "none"
+modalWindow.addEventListener("click", (e) => {
+    if (e.target.id == "modalWindow") {
+        winnerDisplay.style.display = "none"
+        rulesDisplay.style.display = "none"
+        modalWindow.style.display = "none"
     }
 })

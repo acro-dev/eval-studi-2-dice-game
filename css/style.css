@@ -87,7 +87,7 @@ ion-button {
     border-radius: 8px;
 }
 
-#winnerModal {
+#modalWindow {
     display: none;
     position: fixed;
     top: 0;
@@ -99,7 +99,7 @@ ion-button {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-#winnerContent {
+#modalContent {
     width: 60vw;
     height: 60vh;
     position: fixed;
@@ -108,24 +108,13 @@ ion-button {
     transform: translate(-50%, -50%);
 
     background-color: white;
+    border-radius: 16px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     font-size: 60px;
-}
-
-#winnerDisplay::before {
-    content: "\01F389";
-    display: inline-block;
-    transform: scale(-1, 1);
-    margin-right: 30px;
-}
-#winnerDisplay::after {
-    content: "\01F389";
-    display: inline-block;
-    margin-left: 30px;
 }
 #closeModal {
     color: gray;
@@ -139,4 +128,23 @@ ion-button {
 #closeModal:hover {
     color: black;
     cursor: pointer;
+}
+#winnerDisplay {
+    display: none;
+}
+#winnerDisplay::before {
+    content: "\01F389";
+    display: inline-block;
+    transform: scale(-1, 1);
+    margin-right: 30px;
+}
+#winnerDisplay::after {
+    content: "\01F389";
+    display: inline-block;
+    margin-left: 30px;
+}
+#rulesDisplay {
+    display: none;
+    font-size: 20px;
+    width: 80%;
 }

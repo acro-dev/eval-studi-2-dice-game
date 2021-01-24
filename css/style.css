@@ -30,7 +30,9 @@ ion-button {
     font-size: 1.6rem;
     font-weight: 300;
 }
-
+ion-icon {
+    font-size: 2.5rem;
+}
 /* ---- BOARD ELEMENTS ---- */
 .playerName {
     font-size: 2rem;

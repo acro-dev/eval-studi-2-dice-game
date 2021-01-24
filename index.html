@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple dice game for 2 players.">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dice.css">
@@ -15,7 +16,11 @@
         <ion-content>
             <ion-grid fixed="true">
                 <ion-row class="ion-justify-content-center ion-align-items-center">
-                    <ion-col size="4"></ion-col>
+                    <ion-col size="4">
+                        <ion-text color="medium" class="ion-text-center">
+                            <h1>&#x1F437; Dice Game</h1>
+                        </ion-text>
+                    </ion-col>
                     <ion-col size="4" class="ion-text-center">
                         <ion-button color="dark" expand="block" fill="none" size="large" id="newGameButton">
                             <ion-icon color="danger" slot="start" name="ios-add-circle-outline"></ion-icon>New Game

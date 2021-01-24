@@ -14,6 +14,10 @@ const player2Global = document.getElementById("player2Global")
 
 const diceValue = document.getElementById("dice")
 
+const winnerModal = document.getElementById("winnerModal")
+const winnerDisplay = document.getElementById("winnerDisplay")
+const closeModal = document.getElementById("closeModal")
+
 // Declare Classes for Game and Players.
 class Game {
     constructor(player1, player2) {
@@ -60,10 +64,6 @@ class Game {
             this.winner = this.currentPlayer
         }
         return this.winner
-    }
-
-    gameOver() {
-        alert(`Congratulation !`)
     }
 }
 
@@ -151,7 +151,7 @@ holdButton.addEventListener("click", () => {
             let nextPlayer = game.changePlayer(game.currentPlayer.turn)
             highlightPlayer(nextPlayer)
         } else {
-            game.gameOver()
+            gameOver()
         }
     }
 })
@@ -177,3 +177,24 @@ function drawDice(diceRoll) {
     let diceClass = "dice" + diceRoll
     return diceClass
 }
+function gameOver() {
+    let winnerName = ""
+    if (game.winner == player1) {
+        winnerName = "PLAYER 1"
+    } else {
+        winnerName = "PLAYER 2"
+    }
+    winnerDisplay.innerText = winnerName + " WINS !"
+    winnerModal.style.display = "block"
+}
+
+// Close modal when user click on the cross or on the background.
+closeModal.addEventListener("click", () => {
+    winnerModal.style.display = "none"
+})
+
+winnerModal.addEventListener("click", (e) => {
+    if (e.target.id == "winnerModal") {
+        winnerModal.style.display = "none"
+    }
+})

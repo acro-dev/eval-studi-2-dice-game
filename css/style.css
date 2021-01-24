@@ -86,3 +86,56 @@ ion-button {
     background-color: var(--ion-danger-color);
     border-radius: 8px;
 }
+
+#winnerModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 1000vh;
+
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#winnerContent {
+    width: 60vw;
+    height: 60vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 60px;
+}
+
+#winnerDisplay::before {
+    content: "\01F389";
+    display: inline-block;
+    transform: scale(-1, 1);
+    margin-right: 30px;
+}
+#winnerDisplay::after {
+    content: "\01F389";
+    display: inline-block;
+    margin-left: 30px;
+}
+#closeModal {
+    color: gray;
+    position: absolute;
+    right: 12px;
+    top: 0px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#closeModal:hover {
+    color: black;
+    cursor: pointer;
+}

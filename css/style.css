@@ -5,6 +5,7 @@
 }
 * {
     font-family: Lato;
+    font-size: 16px;
 }
 /* ---- IONIC TAG ---- */
 ion-content {
@@ -15,7 +16,7 @@ ion-content {
     );
 }
 ion-grid {
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 1);
     background-color: beige;
     position: absolute;
     top: 50%;
@@ -23,20 +24,20 @@ ion-grid {
     transform: translateX(-50%) translateY(-50%);
 }
 ion-row:last-child {
-    margin-top: 100px;
+    margin-top: 6rem;
 }
 ion-button {
-    font-size: 25px;
+    font-size: 1.6rem;
     font-weight: 300;
 }
 
 /* ---- BOARD ELEMENTS ---- */
 .playerName {
-    font-size: 35px;
-    font-weight: 300px;
+    font-size: 2rem;
+    font-weight: 300;
 }
 .displayPlayerGlobal {
-    font-size: 100px;
+    font-size: 6.5rem;
     font-weight: 100;
     color: var(--ion-danger-color);
 }
@@ -45,17 +46,16 @@ ion-button {
     background-color: var(--ion-danger-color);
     width: fit-content;
     margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 .displayPlayerCurrent > div {
     color: white;
-    font-size: 40px;
-    padding-bottom: 10px;
+    font-size: 2.5rem;
+    padding-bottom: 0.8rem;
 }
 .displayPlayerCurrent > h3 {
-    padding: 10px 40px;
-    font-size: 16px;
+    padding: 0.8rem 2.5rem;
     font-weight: 300;
 }
 
@@ -65,13 +65,13 @@ ion-button {
 }
 .highlightPlayer::after {
     content: "";
-    margin-left: 10px;
-    margin-bottom: 5px;
+    margin-left: 1rem;
+    margin-bottom: 0.3rem;
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     background-color: var(--ion-danger-color);
-    border-radius: 8px;
+    border-radius: 50%;
 }
 
 /* ---- GLOBAL MODAL ---- */
@@ -82,31 +82,28 @@ ion-button {
     left: 0;
 
     width: 100vw;
-    height: 1000vh;
+    height: 100vh;
 
     background-color: rgba(0, 0, 0, 0.8);
 }
 #modalContent {
-    width: 60vw;
-    height: 60vh;
+    max-width: 80vw;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     background-color: white;
-    border-radius: 16px;
+    border-radius: 1rem;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 2rem 4rem;
 }
 #closeModal {
     color: gray;
     position: absolute;
-    right: 12px;
+    right: 0.75rem;
     top: 0px;
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: bold;
 }
 #closeModal:hover {
@@ -116,24 +113,23 @@ ion-button {
 
 /* ---- WINNER DISPLAY ---- */
 #winnerDisplay {
-    font-size: 60px;
+    font-size: 4rem;
     display: none;
 }
 #winnerDisplay::before {
     content: "\01F389";
     display: inline-block;
     transform: scale(-1, 1);
-    margin-right: 30px;
+    margin-right: 2rem;
 }
 #winnerDisplay::after {
     content: "\01F389";
     display: inline-block;
-    margin-left: 30px;
+    margin-left: 2rem;
 }
 
 /* ---- RULES DISPLAY ---- */
 #rulesDisplay {
     display: none;
-    font-size: 20px;
-    width: 80%;
+    font-size: 1.5rem;
 }

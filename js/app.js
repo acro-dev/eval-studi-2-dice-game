@@ -16,9 +16,13 @@ const diceValue = document.getElementById("dice")
 
 const modalWindow = document.getElementById("modalWindow")
 const winnerDisplay = document.getElementById("winnerDisplay")
-const rulesButton = document.getElementById("rulesButton")
 const rulesDisplay = document.getElementById("rulesDisplay")
+const rulesButton = document.getElementById("rulesButton")
 const closeModal = document.getElementById("closeModal")
+
+// Define Variable
+// Stock the last displayed modal content
+let displayedModal = ""
 
 // Declare Classes for Game and Players.
 class Game {
@@ -70,7 +74,8 @@ class Game {
 }
 
 class Player {
-    constructor() {
+    constructor(name) {
+        this.name = name
         this.roundScore = 0
         this.globalScore = 0
         this.turn = false
@@ -112,8 +117,8 @@ class Player {
     }
 }
 // Init players and game
-player1 = new Player()
-player2 = new Player()
+player1 = new Player("PLAYER 1")
+player2 = new Player("PLAYER 2")
 
 game = new Game(player1, player2)
 
@@ -129,12 +134,17 @@ newGameButton.addEventListener("click", () => {
 
 rollDiceButton.addEventListener("click", () => {
     if (game.winner == null) {
+        // Roll the dice and stock the result
         let diceRoll = game.currentPlayer.rollDice()
+
+        // Launch roll animation
         diceValue.removeAttribute("class")
         void diceValue.offsetWidth // To reset animation
         diceValue.classList.add(drawDice(diceRoll), "animateDice")
 
+        // Check dice result to determine if the current player lost
         let playerTurn = game.currentPlayer.checkDiceResult(diceRoll)
+        // Check if current player can continue or switch current player to the next.
         let nextPlayer = game.changePlayer(playerTurn)
         highlightPlayer(nextPlayer)
     } else {
@@ -150,6 +160,7 @@ holdButton.addEventListener("click", () => {
         updatePlayerScore()
 
         if (winner == null) {
+            // If player hold and dont have enougth pts to win, switch to next player.
             let nextPlayer = game.changePlayer(game.currentPlayer.turn)
             highlightPlayer(nextPlayer)
         } else {
@@ -162,6 +173,7 @@ holdButton.addEventListener("click", () => {
 function updatePlayerScore() {
     player1Global.innerText = player1.globalScore
     player1Round.innerText = player1.roundScore
+
     player2Global.innerText = player2.globalScore
     player2Round.innerText = player2.roundScore
 }
@@ -175,40 +187,46 @@ function highlightPlayer(nextPlayer) {
         player2Tag.classList.add("highlightPlayer")
     }
 }
+
 function drawDice(diceRoll) {
     let diceClass = "dice" + diceRoll
     return diceClass
 }
-function gameOver() {
-    let winnerName = ""
-    if (game.winner == player1) {
-        winnerName = "PLAYER 1"
-    } else {
-        winnerName = "PLAYER 2"
-    }
-    modalWindow.style.display = "block"
-    winnerDisplay.style.display = "block"
 
-    winnerDisplay.innerText = winnerName + " WINS !"
+function gameOver() {
+    // Display modal & winner div
+    toggleModalWindow("open", "winner")
+    // Inject winner name to the div
+    winnerDisplay.innerText = game.winner.name + " WINS !"
 }
 
-// Open rules when user click on rules button
+function toggleModalWindow(action, content = displayedModal) {
+    displayedModal = content
+    action == "close" ? (action = "none") : (action = "block")
+    modalWindow.style.display = action
+    switch (displayedModal) {
+        case "rules":
+            rulesDisplay.style.display = action
+            break
+        case "winner":
+            winnerDisplay.style.display = action
+            break
+        default:
+            break
+    }
+}
+
+// Open rules when user click on rules button.
 rulesButton.addEventListener("click", () => {
-    modalWindow.style.display = "block"
-    rulesDisplay.style.display = "block"
+    toggleModalWindow("open", "rules")
 })
 
 // Close modal when user click on the cross or on the background.
 closeModal.addEventListener("click", () => {
-    winnerDisplay.style.display = "none"
-    rulesDisplay.style.display = "none"
-    modalWindow.style.display = "none"
+    toggleModalWindow("close")
 })
-
 modalWindow.addEventListener("click", (e) => {
     if (e.target.id == "modalWindow") {
-        winnerDisplay.style.display = "none"
-        rulesDisplay.style.display = "none"
-        modalWindow.style.display = "none"
+        toggleModalWindow("close")
     }
 })

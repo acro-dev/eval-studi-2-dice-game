@@ -14,6 +14,20 @@
     }
 }
 
+#dice {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.animateDice {
+    transform: rotateZ(0);
+    animation: wizz 0.3s ease-in-out 1;
+}
 .dot {
     width: 26px;
     height: 26px;
@@ -21,10 +35,7 @@
     background-color: black;
     position: absolute;
 }
-.animateDice {
-    transform: rotateZ(0);
-    animation: wizz 0.3s ease-in-out 1;
-}
+
 /* Dice 1 */
 .dice1 #dot1 {
     background-color: red;
@@ -44,7 +55,6 @@
 .dice2 #dot2 {
     transform: translate(35px, 35px);
 }
-
 .dice2 #dot3,
 .dice2 #dot4,
 .dice2 #dot5,
@@ -59,7 +69,6 @@
 .dice3 #dot2 {
     transform: translate(35px, 35px);
 }
-
 .dice3 #dot3 {
     display: block;
 }
@@ -86,6 +95,7 @@
 .dice4 #dot6 {
     display: none;
 }
+
 /* Dice 5 */
 .dice5 #dot1 {
     transform: translate(-35px, 35px);
@@ -105,25 +115,7 @@
 .dice5 #dot6 {
     display: none;
 }
-/* Dice 6 */
-.dice6 #dot1 {
-    transform: translate(-35px, 45px);
-}
-.dice6 #dot2 {
-    transform: translate(-35px, 0);
-}
-.dice6 #dot3 {
-    transform: translate(-35px, -45px);
-}
-.dice6 #dot4 {
-    transform: translate(35px, 45px);
-}
-.dice6 #dot5 {
-    transform: translate(35px, 0);
-}
-.dice6 #dot6 {
-    transform: translate(35px, -45px);
-}
+
 /* Dice 6 */
 .dice6 #dot1 {
     transform: translate(-35px, 45px);

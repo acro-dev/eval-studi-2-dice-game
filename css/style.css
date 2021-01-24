@@ -6,7 +6,7 @@
 * {
     font-family: Lato;
 }
-
+/* ---- IONIC TAG ---- */
 ion-content {
     background: radial-gradient(
         circle,
@@ -22,7 +22,7 @@ ion-grid {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
-.last-row {
+ion-row:last-child {
     margin-top: 100px;
 }
 ion-button {
@@ -30,6 +30,11 @@ ion-button {
     font-weight: 300;
 }
 
+/* ---- BOARD ELEMENTS ---- */
+.playerName {
+    font-size: 35px;
+    font-weight: 300px;
+}
 .displayPlayerGlobal {
     font-size: 100px;
     font-weight: 100;
@@ -54,25 +59,7 @@ ion-button {
     font-weight: 300;
 }
 
-#dice {
-    width: 150px;
-    height: 150px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-}
-#diceValue {
-    font-size: 50px;
-}
-
-.playerName {
-    font-size: 35px;
-    font-weight: 300px;
-}
-
+/* ---- PLAYER TURN HIGHLIGHT ---- */
 .highlightPlayer {
     font-weight: 700;
 }
@@ -87,6 +74,7 @@ ion-button {
     border-radius: 8px;
 }
 
+/* ---- GLOBAL MODAL ---- */
 #modalWindow {
     display: none;
     position: fixed;
@@ -98,7 +86,6 @@ ion-button {
 
     background-color: rgba(0, 0, 0, 0.8);
 }
-
 #modalContent {
     width: 60vw;
     height: 60vh;
@@ -113,8 +100,6 @@ ion-button {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-size: 60px;
 }
 #closeModal {
     color: gray;
@@ -124,12 +109,14 @@ ion-button {
     font-size: 40px;
     font-weight: bold;
 }
-
 #closeModal:hover {
     color: black;
     cursor: pointer;
 }
+
+/* ---- WINNER DISPLAY ---- */
 #winnerDisplay {
+    font-size: 60px;
     display: none;
 }
 #winnerDisplay::before {
@@ -143,6 +130,8 @@ ion-button {
     display: inline-block;
     margin-left: 30px;
 }
+
+/* ---- RULES DISPLAY ---- */
 #rulesDisplay {
     display: none;
     font-size: 20px;
